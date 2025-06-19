@@ -14,6 +14,7 @@
       display: flex;
       justify-content: center;
       padding: 2rem;
+      scroll-behavior: smooth;
     }
 
     .container-custom {
@@ -50,6 +51,22 @@
       text-align: center;
     }
 
+    .hero-header h1 {
+      background: linear-gradient(90deg, #ffffff, #dff1ff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 5s infinite linear;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -500px 0;
+      }
+      100% {
+        background-position: 500px 0;
+      }
+    }
+
     .hero-image,
     .infographic-image {
       max-width: 100%;
@@ -58,6 +75,12 @@
       border-radius: 10px;
       margin: 1rem 0;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease;
+    }
+
+    .infographic-image:hover,
+    .hero-image:hover {
+      transform: scale(1.02);
     }
 
     .tableau-embed-container {
@@ -73,6 +96,7 @@
 
     section {
       margin-top: 2rem;
+      scroll-margin-top: 80px;
     }
 
     footer {
@@ -84,13 +108,27 @@
     ul li {
       margin-bottom: 0.5rem;
     }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+
+    .fade-in.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h3::before {
+      content: "🕊️ ";
+      margin-right: 0.5rem;
+    }
   </style>
 </head>
 
 <body>
   <div class="container-custom">
-
-    <!-- ✨ Header with image background -->
     <header class="hero-header">
       <div class="hero-header-content">
         <h1 class="display-5">No More Nesting Sites: Protecting Native Bird Species Numbers in British Columbia</h1>
@@ -99,53 +137,30 @@
       </div>
     </header>
 
-    <section>
-      <p>
-        Our project aims to highlight the loss of native species in the lower mainland of British Columbia due to human-caused habitat loss and the introduction of invasive species through the use of an interactive dashboard and infographic showing the case study of the Western Bluebird. Metro Vancouver’s population now exceeds 3 million people (Kulkarni, 2025), with multiple cities in British Columbia being some of Canada’s fastest-growing population centres in 2022 (Szeto, 2022). The Nature Trust of British Columbia (n.d.) states that biodiversity in the province is currently in good shape, but also that 43% of species native to British Columbia have been assessed as a provincial conservation concern. Many invasive species in British Columbia, such as the European Starling, can thrive in human-made structures while native species cannot (Invasive Species Council of BC, n.d.), which severely limits nesting sites when combined with deforestation. Both issues will need the attention of the public and legislatures to address.
-      </p>
-      <p>
-        Our project focuses on informing community scientists who frequently use birding apps, such as eBird, and the general public living in areas experiencing habitat and biodiversity loss. We hope to educate others in order to spread awareness, particularly on how human activity has affected local bird populations and ways the average person can help.
-      </p>
+    <section class="fade-in">
+      <p>Our project aims to highlight the loss of native species in the lower mainland of British Columbia due to human-caused habitat loss and the introduction of invasive species through the use of an interactive dashboard and infographic...</p>
     </section>
 
-    <section>
+    <section class="fade-in">
       <div class="tableau-embed-container">
-        <tableau-viz id="tableau-viz"
-          src="https://us-west-2b.online.tableau.com/t/infovisubc/views/FinalDashboard_17503407121290/InvasiveandEndangeredBirdCountsintheLowerMainland"
-          width="100%" height="900" toolbar="bottom">
-        </tableau-viz>
+        <tableau-viz id="tableau-viz" src="https://us-west-2b.online.tableau.com/t/infovisubc/views/FinalDashboard_17503407121290/InvasiveandEndangeredBirdCountsintheLowerMainland" width="100%" height="900" toolbar="bottom"></tableau-viz>
       </div>
     </section>
 
-    <section>
-      <p>
-        As you can see when comparing the views “Forest Hectares Lost by Region and Year” and “Invasive and Native Species Counts Over Time by Region,” the loss of forest habitat is not the only factor in population changes. The Squamish-Lillooet region sees spikes in hectares of forest lost between 2009 and 2021, yet the populations of both native and invasive bird species remain relatively stable. This could be due to the fact that surrounding urban sprawl affects rising invasive numbers more than forest loss or that the numbers are skewed from single sightings of large native groups, which can be seen when filtering the map view for the Squamish-Lillooet area. Part of it may be due to bias in our dataset. The crowd-sourced nature of eBird data means the low amounts of sightings in either category could suggest that there are not many eBird users in the area compared to more populous regions.
-      </p>
-
+    <section class="fade-in">
+      <p>As you can see when comparing the views “Forest Hectares Lost...”</p>
       <img class="infographic-image" src="https://raw.githubusercontent.com/nemoming/LIBR515TeamProject/main/images/image1.png" alt="image1">
-
-      <p>
-        In Fraser Valley and Metro Vancouver, areas with more urban development, invasive species numbers are increasing exponentially (See “Invasive and Native Species Counts Over Time by Region”). “Invasive vs Native Numbers by Year” shows the difference between the populations of invasive and native species is growing when taking the entire Lower Mainland into account.
-      </p>
-
+      <p>In Fraser Valley and Metro Vancouver...</p>
       <img class="infographic-image" src="https://raw.githubusercontent.com/nemoming/LIBR515TeamProject/main/images/image2.png" alt="image2">
-
-      <p>
-        Let’s take a closer look at the effects of introducing new species into an ecosystem. Our timeline takes a look at the introduction of European Starlings in North America and its effects on the Western Bluebird in Vancouver.
-      </p>
     </section>
 
-    <section class="infographic-placeholder">
-      <h3>📊 Infographic</h3>
-      <p>This static infographic visualization:</p>
+    <section class="fade-in">
+      <h3>Infographic</h3>
       <img class="infographic-image" src="https://raw.githubusercontent.com/nemoming/LIBR515TeamProject/main/infographic/Final%20Project%20Infographic.png" alt="infographic">
     </section>
 
-
-    <section>
+    <section class="fade-in">
       <h2>Want to help?</h2>
-      <p>The Invasive Species Council of British Columbia has many resources on ways to help protect biodiversity in your area. You can even become a member!</p>
-      <p><b>Things you can do to play your part:</b></p>
       <ul>
         <li>Report sightings of invasive species on the ISCBC reporting app, iNaturalist, or eBird</li>
         <li>Keep your cats indoors</li>
@@ -158,10 +173,10 @@
       </ul>
     </section>
 
-    <section style="font-size: 0.85rem; color: #555; margin-top: 3rem;">
-  <h3 style="font-size: 1.2rem;">References</h3>
-  <ul>
-    <li>British Columbia Conservation Foundation. (n.d.). About the project. Cowichan Bring Back The Bluebirds Project. https://cowichanbluebird.wordpress.com/about/</li>
+    <section class="fade-in" style="font-size: 0.85rem; color: #555; margin-top: 3rem;">
+      <h3 style="font-size: 1.2rem;">References</h3>
+      <ul>
+        <li>British Columbia Conservation Foundation. (n.d.). About the project. Cowichan Bring Back The Bluebirds Project. https://cowichanbluebird.wordpress.com/about/</li>
     <li>B.C. Conservation Data Centre. (2000). Conservation Status Report: Sialia mexicana. https://a100.gov.bc.ca/pub/eswp/</li>
     <li>British Columbia Conservation Foundation. (n.d.). Western bluebirds. https://cowichanbluebird.wordpress.com/western-bluebirds/</li>
     <li>Cavers, M. (2009). "Victoria’s own oak tree": A Brief Cultural History of Victoria’s Garry Oaks after 1843(1). BC Studies, 163, 65–85,163.</li>
@@ -181,13 +196,29 @@
     <li>UN-Habitat. (2024). Global Urban Indicators Database [Data set]. United Nations Human Settlements Programme.</li>
     <li>UN-Habitat. (2025). Global SDG 11.3.1 dataset [Data set]. United Nations Human Settlements Programme.</li>
     <li>Western Bluebird. BC Breeding Bird Atlas. (2015). https://birdatlas.bc.ca/accounts/speciesaccount.jsp?lang=en&sp=WEBL</li>
-  </ul>
-</section>
+      </ul>
+    </section>
 
     <footer>
       <p>Sam Carter, Garland Joseph, Mingzhe Xue · University of British Columbia · 2025</p>
     </footer>
   </div>
+
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("appear");
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
 </body>
 
 </html>
